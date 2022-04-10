@@ -3,12 +3,16 @@ const axios = require('axios')
 const cors = require("cors");
 const req = require('request');
 const bodyParser = require('body-parser');
+const basicAuth = require('express-basic-auth')
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(basicAuth({
+    users: { 'admin': 'dP7yEO' }
+}))
 
 const token = "Администратор:123";
 
