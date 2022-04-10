@@ -25,8 +25,9 @@ function b64EncodeUnicode(str) {
 
 let encodedAuth = b64EncodeUnicode(token);
 
+const  baseURL= 'http://localhost/vkr/hs/Ulstu_Vedomosti/v1';
 const myAxios = axios.create({
-    baseURL: 'http://localhost/vkr/hs/Ulstu_Vedomosti/v1',
+    baseURL: baseURL,
     headers: {
         'Content-Type': 'application/json; charset=utf-8',
         'Authorization': `Basic ${encodedAuth}`,
@@ -104,7 +105,7 @@ app.get("/api/getGrades/:gradesSystemId", function (request, response) {
 
 app.get("/api/vedomostToPdf/:vedomostId", function (request, response) {
     const options = {
-        url: `http://localhost/vkr/hs/Ulstu_Vedomosti/v1/VedomostToPdf?vedomostId=${request.params.vedomostId}`,
+        url: `${baseURL}/VedomostToPdf?vedomostId=${request.params.vedomostId}`,
         method: 'GET',
         headers: {
             'Accept': 'application/json',
